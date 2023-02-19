@@ -11,7 +11,7 @@ arcade.draw_text('A', 420,400, font_size=40)
 arcade.draw_text('N', 460,400, font_size=40)
 arcade.draw_text('G', 500,400, font_size=40)
 arcade.draw_text('E', 540,400, font_size=40)
-arcade.draw_circle_filled(325,325,100,arcade.csscolor.WHITE)
+
 # convert to hexidecimal 66,ff,66= 66,255,66 as an example
 #arcade.draw is going to be used for project 2
 arcade.finish_render()
