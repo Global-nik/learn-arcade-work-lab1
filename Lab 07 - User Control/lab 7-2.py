@@ -26,12 +26,12 @@ def draw_spike1(x1, y1, x2, y2, x3, y3):
     arcade.draw_triangle_outline(x1, y1, x2, y2, x3, y3, arcade.csscolor.IVORY, 2)
 
 
-def draw_spike2(x1, y1, x2, y2, x3, y3):
+#def draw_spike2(x1, y1, x2, y2, x3, y3):
 
     # Draws a point through passing x and y and making sure it is centered
     #Spikes
-    arcade.draw_triangle_filled(x1, y1, x2, y2, x3, y3, arcade.csscolor.RED,)
-    arcade.draw_triangle_outline(x1, y1, x2, y2, x3, y3, arcade.csscolor.IVORY, 1)
+    #arcade.draw_triangle_filled(x1, y1, x2, y2, x3, y3, arcade.csscolor.RED,)
+    #arcade.draw_triangle_outline(x1, y1, x2, y2, x3, y3, arcade.csscolor.IVORY, 1)
 
     # Loops the diagonal/tilted lines
     x_end = x1
@@ -69,7 +69,7 @@ class Left_fighter:
         self.position_y2 += self.change_y2
 
 # Keyboard controlled
-class Right_fighter
+class Right_fighter:
     def __init__(self, position_x, position_y, change_y, change_x, texture, scale):
         self.position_x = position_x
         self.position_y = position_y
@@ -159,7 +159,7 @@ class MyGame(arcade.Window):
                      0, 10, 700, 0, 0, 1200, 700, 690,
                      0, 1200, 10, 0, 1190, 1200, 700, 0)
         draw_spike1(1200, 350, 0, 250, 50, 300)
-        draw_spike2(1200, 350, 0, 250, 50, 300)
+        #draw_spike2(1200, 350, 0, 250, 50, 300)
 
 
 def main():
