@@ -11,7 +11,8 @@ import random
 import arcade
 from pyglet.math import Vec2
 
-SPRITE_SCALING = 0.5
+SPRITE_SCALING_PLAYER = 0.5
+SPRITE_SCALING_BOX = 0.5
 
 DEFAULT_SCREEN_WIDTH = 800
 DEFAULT_SCREEN_HEIGHT = 600
@@ -78,14 +79,51 @@ class MyGame(arcade.Window):
         self.player_list.append(self.player_sprite)
 
         # -- Set up several columns of walls
-        for x in range(200, 1650, 210):
-            for y in range(0, 1600, 64):
-                # Randomly skip a box so the player can find a way through
-                if random.randrange(5) > 0:
-                    wall = arcade.Sprite(":resources:images/tiles/grassCenter.png", SPRITE_SCALING)
-                    wall.center_x = x
-                    wall.center_y = y
-                    self.wall_list.append(wall)
+        # Manually create and position a box at 300, 200
+        wall = arcade.Sprite("boxCrate_double.png", SPRITE_SCALING_BOX)
+        wall.center_x = 300
+        wall.center_y = 500
+        self.wall_list.append(wall)
+
+        # Manually create and position a box at 364, 200
+        wall = arcade.Sprite("boxCrate_double.png", SPRITE_SCALING_BOX)
+        wall.center_x = 364
+        wall.center_y = 200
+        self.wall_list.append(wall)
+
+        # --- Place boxes inside a loop
+        for x in range(32, 640, 64):
+            wall = arcade.Sprite("boxCrate_double.png", SPRITE_SCALING_BOX)
+            wall.center_x = x
+            wall.center_y = 436
+            self.wall_list.append(wall)
+
+        # --- Place walls with a list VERTICLE +&-
+        coordinate_list = [[400, 500],[400, 564],[400, 628],
+                           [400, 692],[400, 756],[400, 821],
+                           [400, 885],[400, 949],[400, 1013],
+                           [400, 1077],[400, 1141],[400, 1205]]
+        '''coordinate_list = [[-400, 500], [-400, 564], [-400, 628],
+                           [-400, 692], [-400, 756], [-400, 821],
+                           [-400, 885], [-400, 949], [-400, 1013],
+                           [-400, 1077], [-400, 1141], [-400, 1205]]'''
+
+
+        # Loop through coordinates
+        for coordinate in coordinate_list:
+            wall = arcade.Sprite("boxCrate_double.png", SPRITE_SCALING_BOX)
+            wall.center_x = coordinate[0]
+            wall.center_y = coordinate[1]
+            self.wall_list.append(wall)
+
+        #for x in range(200, 1650, 210):
+        #    for y in range(0, 1600, 64):
+        #        # Randomly skip a box so the player can find a way through
+        #        if random.randrange(5) > 0:
+        #            wall = arcade.Sprite(":resources:images/tiles/grassCenter.png", SPRITE_SCALING)
+        #            wall.center_x = x
+        #            wall.center_y = y
+        #            self.wall_list.append(wall)
 
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
@@ -107,6 +145,7 @@ class MyGame(arcade.Window):
         # Draw all the sprites.
         self.wall_list.draw()
         self.player_list.draw()
+        self.wall_list.draw()
 
 
         # Select the (unscrolled) camera for our GUI

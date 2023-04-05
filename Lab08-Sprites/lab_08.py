@@ -50,9 +50,9 @@ class MyGame(arcade.Window):
     def __init__(self):
         """ Initializer """
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
-        #self.adult_sound = arcade.load_sound("punch.mp3")
-        self.adult_sound = arcade.load_sound("/Users/Jxen/Desktop/learn-arcade-work/lab_08 - Sprites/punch.mp3")
-        #self.baby_sound = arcade.load_sound()
+        self.adult_sound = arcade.load_sound("3dpunch2.wav")
+        #self.adult_sound = arcade.load_sound("/Users/Jxen/Desktop/learn-arcade-work/lab_08 - Sprites/punch.mp3")
+        self.baby_sound = arcade.load_sound("babylaugh.wav")
 
         # Variables that will hold sprite lists
         self.racoon_list = None
@@ -151,6 +151,7 @@ class MyGame(arcade.Window):
             for baby in baby_hit_list:
                 baby.remove_from_sprite_lists()
                 self.score += 1
+                arcade.play_sound(self.baby_sound)
             for adult in adult_hit_list:
                 adult.remove_from_sprite_lists()
                 self.score -= 5
