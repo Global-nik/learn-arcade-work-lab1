@@ -1,4 +1,8 @@
 import re
+
+import arcade.color
+
+
 def split_line(line):
     return re.findall('[A-Za-z]+(?:\'[A-Za-z]+)?',line)
 def linear_search (aiw, dictionary_list):
@@ -46,7 +50,7 @@ def main():
         line = line.strip()
         aiw_list.append(line)
 
-    print("--- Linear Search ---")
+    print("-~- Linear Search -~-")
     linear_search(aiw_list, dictionary_list)
     print("--- Binary Search ---")
     binary_search(aiw_list, dictionary_list)
